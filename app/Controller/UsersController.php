@@ -37,7 +37,6 @@ class UsersController extends AppController {
 
     public function commander_index() {
         $this->layout = 'admin';
-
         $all_users = $this->User->find('all');
     }
 }

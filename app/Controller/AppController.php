@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level Controller
  *
@@ -18,7 +19,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Controller', 'Controller');
 
 /**
@@ -31,24 +31,41 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	
-	public $components = array(
+
+    public $components = array(
         'Session',
         'Auth' => array(
+            'authorize' => 'Controller',
             'loginRedirect' => array(
-                'controller' => 'posts',
+                'controller' => 'users',
                 'action' => 'index'
             ),
             'logoutRedirect' => array(
-                'controller' => 'pages',
-                'action' => 'display',
-                'home'
+                'controller' => 'users',
+                'action' => 'commander_login',
             ),
             'authenticate' => array(
                 'Form' => array(
-                    'passwordHasher' => 'Blowfish'
+                    'passwordHasher' => 'Blowfish',
+                    'fields' => array('username' => 'email')
                 )
             )
         )
     );
+    
+    public function isAuthorized($user = null) {
+
+        // Any registered user can access public functions
+        if (empty($this->request->params['admin'])) {
+            return true;
+        }
+
+        // Only admins can access admin functions
+        if (isset($this->request->params['commander'])) {
+            return true;
+        }
+
+        // Default deny
+        return false;
+    }
 }

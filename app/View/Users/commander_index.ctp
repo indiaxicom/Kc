@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h2>Bordered Table</h2>
+        <h2><?php echo $page_title; ?></h2>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
@@ -22,6 +22,16 @@
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
+                    <tr>
+                        <td colspan="4">
+                            <?php
+                            echo $this->Paginator->first(3);
+                            echo $this->Paginator->prev('Prev') . ' | ';
+                            echo $this->Paginator->numbers(array('first' => 'First page')) . ' | ';
+                            echo $this->Paginator->next('Next');
+                            ?>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

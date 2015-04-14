@@ -3,7 +3,9 @@ App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
 
-    public $uses = array();
+    /*Calling components*/
+    public $components = array('Paginator');
+    //public $helpers = array('Paginator');
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -37,8 +39,23 @@ class UsersController extends AppController {
 
     public function commander_index() {
         $this->layout = 'admin';
-        $all_users = $this->User->find('all', array('fields' => array('name', 'email', 'created', 'modified')));
-        $this->set(compact('all_users'));
+        $page_title = 'Users';
+        $paginate = array(
+            'limit' => PAGINATE_LIMIT,
+            'fields' => array('name', 'email', 'created', 'modified'),
+            'order' => array(
+                'User.id' => 'DESC'
+            )
+        );
+
+        $this->Paginator->settings = $paginate;
+        try {
+            $all_users = $this->Paginator->paginate('User');
+        } catch (NotFoundException $e) {
+            $this->Session->setFlash(__('Invalid Pagination number'));
+        }
+
+        $this->set(compact('all_users', 'page_title'));
     }
     
     public function commander_logout() {

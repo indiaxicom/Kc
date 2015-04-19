@@ -37,8 +37,17 @@ class UsersController extends AppController {
     
     public function check_existing_email()
     {
-        echo 1;
-        exit;
+        $this->autoRender = FALSE;
+        
+        if ($this->request->is('post'))
+        {
+            $email_exists = $this->User->findByEmail($this->request->data['User']['email'], array('id'));
+
+            if ($email_exists)
+            {
+                echo 0;
+            }
+        }
     }
     
     public function index() {

@@ -41,13 +41,15 @@ class UsersController extends AppController {
         
         if ($this->request->is('post'))
         {
+            $valid = true;
             $email_exists = $this->User->findByEmail($this->request->data['User']['email'], array('id'));
 
             if ($email_exists)
             {
-                echo 0;
+               $valid = false;
             }
         }
+        exit(json_encode($valid));
     }
     
     public function index() {

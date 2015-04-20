@@ -1,6 +1,15 @@
 <div class="row">
     <div class="col-lg-12">
-        <h2><?php echo $page_title; ?></h2>
+        <div class="row">
+            <h2 class="col-lg-6"><?php echo $page_title; ?></h2>
+            <div class="col-lg-6">
+                <?php
+                echo $this->Html->link('<button class="btn btn-primary pull-right" type="button">Add New User</button>',
+                    array('action' => 'commander_add'), array('escape' => FALSE));
+                ?>
+            </div>
+        </div>
+
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>

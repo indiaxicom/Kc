@@ -12,11 +12,16 @@ class UsersController extends AppController {
         $this->Auth->allow(array());
     }
 
+
     public function index() {
         $this->layout = 'admin';
     }
 
-    public function add() {
+
+    public function commander_add() {
+        $this->layout = 'admin';
+        $page_title = 'Add User';
+
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
@@ -27,6 +32,7 @@ class UsersController extends AppController {
                 __('The user could not be saved. Please, try again.')
             );
         }
+        $this->set(compact('page_title'));
     }
     public function commander_login() {
          if ($this->request->is('post')) {
@@ -49,6 +55,7 @@ class UsersController extends AppController {
         );
 
         $this->Paginator->settings = $paginate;
+        
         try {
             $all_users = $this->Paginator->paginate('User');
         } catch (NotFoundException $e) {

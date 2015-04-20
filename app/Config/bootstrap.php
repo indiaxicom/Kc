@@ -116,6 +116,6 @@ CakeLog::config('error', array(
 
 
 /* Defining Constatnts */
-define('PAGINATE_LIMIT', 1);
+define('PAGINATE_LIMIT', 25);
 
 /* Constant defining ends here */

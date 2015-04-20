@@ -9,10 +9,47 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow(array());
+        $this->Auth->allow(array('register', 'check_existing_email'));
     }
 
+    public function login()
+    {
+        $this->layout = 'home';
+        
+        if ($this->Auth->user())
+        {
+            return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+        }
+        
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+            }
+            $this->Session->setFlash(__('Invalid username or password, try again'));
+        }
+    }
+    
+    public function register()
+    {
+        $this->layout = 'home';
+        
+    }
+    
+    public function check_existing_email()
+    {
+        $this->autoRender = FALSE;
+        
+        if ($this->request->is('post'))
+        {
+            $email_exists = $this->User->findByEmail($this->request->data['User']['email'], array('id'));
 
+            if ($email_exists)
+            {
+                echo 0;
+            }
+        }
+    }
+    
     public function index() {
         $this->layout = 'admin';
     }

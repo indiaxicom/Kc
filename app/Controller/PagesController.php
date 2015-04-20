@@ -30,21 +30,22 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
 	public $uses = array();
+        
+        public function beforeFilter() {
+            parent::beforeFilter();
+            $this->Auth->allow(array('home'));
+        }
+        
+        /*
+         * default Controller
+         */
+        public function home()
+        {
+            $this->layout = 'home';
+        }
 
-/**
- * Displays a view
- *
- * @return void
- * @throws NotFoundException When the view file could not be found
- *	or MissingViewException in debug mode.
- */
-	public function display() {
+        public function display() {
 		$path = func_get_args();
 
 		$count = count($path);

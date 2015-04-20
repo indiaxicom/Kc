@@ -29,9 +29,29 @@ class UsersController extends AppController {
         }
     }
     
+    /* Created - 20 April 2015
+     * Created By - Sumit Kohli
+     * Description - User Registration from front end
+     */
+     
     public function register()
     {
         $this->layout = 'home';
+
+        if ($this->request->is('post'))
+        {
+            $this->request->data['User']['status'] = IN_ACTIVE;
+
+            if ($this->User->save($this->request->data['User']))
+            {
+                return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+            }
+            else
+            {
+                $this->Session->setFlash(__('Unable to save details'));
+                pr($this->User->validationErrors);
+            }
+        }
         
     }
     

@@ -118,4 +118,10 @@ CakeLog::config('error', array(
 /* Defining Constatnts */
 define('PAGINATE_LIMIT', 25);
 
+//-----User Status Constants------//
+define('ACTIVE', '1');
+define('IN_ACTIVE', '-1');
+define('DELETED', '0');
+
+
 /* Constant defining ends here */

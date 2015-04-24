@@ -15,25 +15,28 @@ class UsersController extends AppController {
     public function login()
     {
         $this->layout = 'home';
-        
+
         if ($this->Auth->user())
         {
             return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
         }
-        
+
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
             }
             $this->Session->setFlash(__('Invalid username or password, try again'));
         }
+        //~ $sumit = array(1, 2, 'sami');
+        //~ $this->set(compact('sumit'));
+        //~ $this->set('_jsonp', array('sumit'));
     }
-    
+
     /* Created - 20 April 2015
      * Created By - Sumit Kohli
      * Description - User Registration from front end
      */
-     
+
     public function register()
     {
         $this->layout = 'home';
@@ -52,13 +55,13 @@ class UsersController extends AppController {
                 pr($this->User->validationErrors);
             }
         }
-        
+
     }
-    
+
     public function check_existing_email()
     {
         $this->autoRender = FALSE;
-        
+
         if ($this->request->is('post'))
         {
             $valid = true;
@@ -71,7 +74,7 @@ class UsersController extends AppController {
         }
         exit(json_encode($valid));
     }
-    
+
     public function index() {
         $this->layout = 'admin';
     }
@@ -93,6 +96,13 @@ class UsersController extends AppController {
         }
         $this->set(compact('page_title'));
     }
+
+
+    /*
+     * Description - Login for Admin
+     * Created By- Sumit Kohli
+     * Created - 11 August 2015
+     */
     public function commander_login() {
          if ($this->request->is('post')) {
             if ($this->Auth->login()) {
@@ -114,7 +124,7 @@ class UsersController extends AppController {
         );
 
         $this->Paginator->settings = $paginate;
-        
+
         try {
             $all_users = $this->Paginator->paginate('User');
         } catch (NotFoundException $e) {
@@ -123,7 +133,7 @@ class UsersController extends AppController {
 
         $this->set(compact('all_users', 'page_title'));
     }
-    
+
     public function commander_logout() {
         return $this->redirect($this->Auth->logout());
     }

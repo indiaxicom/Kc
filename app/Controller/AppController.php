@@ -34,6 +34,7 @@ class AppController extends Controller {
 
     public $components = array(
         'Session',
+        'Util',
         'Auth' => array(
             'authorize' => 'Controller',
             'loginRedirect' => array(
@@ -53,19 +54,32 @@ class AppController extends Controller {
         )
     );
     
+   function beforeFilter() {
+        if($this->request->prefix == 'commander'){
+            $this->layout = 'admin';
+        } 
+    }
+    
     public function isAuthorized($user = null) {
 
         // Any registered user can access public functions
-        if (empty($this->request->params['admin'])) {
+        if (empty($this->request->params['commander'])  && $user['type'] == USER_SITE) {
             return true;
         }
-
+        
         // Only admins can access admin functions
-        if (isset($this->request->params['commander'])) {
+        if ($this->request->prefix == 'commander' && $user['type'] == USER_ADMIN) {
             return true;
         }
-
         // Default deny
         return false;
+    }
+    
+    protected function sanitize_file_name($str)
+    {
+        $str = preg_replace("/[^A-Za-z0-9 .]/", '', $str);
+        $str = preg_replace( "/\s+/", "-", $str);
+        $str = strtolower($str);
+        return $str;
     }
 }

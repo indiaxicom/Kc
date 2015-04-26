@@ -25,7 +25,7 @@
 }
 
 body {margin:0; padding:0; font-family:'open_sansregular'; font-size:13px; line-height:normal; color:#8c8c8c; background:#fff}
-a, a:visited {outline:none; text-decoration:underline; color:#000000;}
+a, a:visited {outline:none; text-decoration:none; color:#000000;}
 a:hover {text-decoration:none;}
 input {font-family:Arial, Helvetica, sans-serif; font-size:12px; vertical-align:middle;}
 textarea {font-family:Arial, Helvetica, sans-serif; font-size:12px; vertical-align:middle;}
@@ -90,7 +90,7 @@ background: #777; -webkit-box-shadow: 0 21px 20px #777;  -moz-box-shadow: 0 21px
 .headerin .searchbox{ width:19%; float:left; border:#e0e0e0 1px solid; border-radius:5px; margin:2.2% 0 0 0;}
 .headerin .searchbox .searchinput{ width:77%; border:none; padding:3%; background:none; color:#b9b9b9; font-size:14px; font-family:'open_sanslight';;}
 .headerin .logo{ width:25%; float:left; text-align:left; padding:0 0 0 17%; margin:0.6% 0 0 0;}
-.headerin .userbox{ width:20%; float:right; margin:2.5% 0 0 0;}
+.headerin .userbox{ width:25%; float:right; margin:2.5% 0 0 0;}
 .worldicon{ width:30px; margin-right:15px; position:relative;}
 .worldicon .review{ width:18px; height:18px; background:#b80000; position:absolute; top:-23px; left:20px; border-radius:150px; text-align:center; font-size:13px; color:#ffffff; font-family:'open_sanslight';}
 .user{ width:30px; height:30px; margin-right:15px; border-radius:150px; background:#282828; display:inline-block;}

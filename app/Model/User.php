@@ -8,7 +8,8 @@ class User extends AppModel {
     public $validate = array(
         'password' => array(
             'rule' => array('minLength', '8'),
-            'message' => 'Minimum 8 characters long'
+            'message' => 'Minimum 8 characters long',
+            'on' => 'create'
         ),
         'email' => array(
             'isUnique' => array(
@@ -17,6 +18,10 @@ class User extends AppModel {
                 'on' => 'create'
             )
         )
+    );
+    
+    public $virtualFields = array(
+        'full_name' => 'CONCAT(User.first_name, " ", User.last_name)'
     );
 
     public function beforeSave($options = array()) {

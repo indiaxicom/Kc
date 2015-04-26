@@ -45,6 +45,14 @@ class EmailConfig {
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
+        
+         public $gmail = array(
+            'host' => 'ssl://smtp.gmail.com',
+            'port' => 465,
+            'username' => 'indiaxicom@gmail.com',
+            'password' => 'technologies',
+            'transport' => 'Smtp'
+        );
 
 	public $smtp = array(
 		'transport' => 'Smtp',

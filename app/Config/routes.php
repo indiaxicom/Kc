@@ -25,6 +25,10 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
+        //Router::connect("/{$prefix}/:controller", array('action' => 'add', 'prefix' => $prefix, $prefix => true));
+//        Router::connect('/commander/:controller/edit/*', array('action' => 'commander_add'));
+//        Router::connect('/profile/*', array('controller' => 'users', 'action' => 'profile'));
+        //Router::connect('/:username/:action/:controller', [], ['username' => '[a-z0-9-_]+', 'pass' => ['username']]);
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

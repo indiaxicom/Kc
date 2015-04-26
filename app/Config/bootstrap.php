@@ -120,8 +120,12 @@ define('PAGINATE_LIMIT', 25);
 
 //-----User Status Constants------//
 define('ACTIVE', '1');
-define('IN_ACTIVE', '-1');
+define('IN_ACTIVE', '2');
 define('DELETED', '0');
+
+//-----User Type Constants------//
+define('USER_ADMIN', '1');
+define('USER_SITE', '2');
 
 
 /* Constant defining ends here */

@@ -6,6 +6,7 @@
             <div class="homemidin">
                 <div class="loginbox">
                     <div class="lablefield">
+                        
                         <?php
                         echo $this->Form->input('first_name', 
                             array(
@@ -30,7 +31,6 @@
                         echo $this->Form->email('email', 
                             array('placeholder' => 'Email', 'class' => 'inputbox', 
                                 'label' => FALSE, 'div' => FALSE, 'required' => TRUE,
-                                //'remote' => $this->Html->url(array('controller' => 'users', 'action' => 'check_existing_email'))
                             )
                         ); 
                         ?>
@@ -73,7 +73,7 @@
             <div><img src="images/box_shadow.png" width="402" height="44" alt=""></div>
         </div>            
         <div class="homemidfr">
-            <?php echo $this->Html->link('<button class="inputbtnone">Login</button>', 
+            <?php echo $this->Html->link('<button type="button" class="inputbtnone">Login</button>', 
                 array('controller' => 'users', 'action' => 'login'), array('escape' => FALSE)) ?>
         </div>
         <div class="clr"></div>

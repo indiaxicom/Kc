@@ -5,6 +5,7 @@
         <div class="homemid">
             <div class="homemidin">
                 <div class="loginbox">
+                    <?php echo $this->Session->flash(); ?>
                     <div class="lablefield">
                         <?php
                         echo $this->Form->input('email', 

@@ -32,6 +32,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         echo $this->fetch('css');
         echo $this->fetch('script');
         ?>
+        <script> var SITE_URL = "<?php echo $this->Html->url('/') ?>"</script>
     </head>
     <body>
         <section id="maincontainer">

@@ -1,1 +1,17 @@
 label.error {background: none repeat scroll 0 0 #f0f0f0; border-radius: 7px; color: #d79077; display: inherit; padding: 3px 12px;}
+
+.checkbox.error {float:left; margin: 6px 8px 4px 6px !important}
+
+.btnbox {width:55%}
+
+.sociallogo a {text-decoration: none;}
+.sociallogo  i.fa {font-size: 65px; margin:0 15px}
+i.fa-facebook-official{color: #7D85F3}
+i.fa-twitter-square{color: #38A1F4}
+i.fa-envelope{color: #CABB94}
+i.fa-yahoo{color: #D17ED3}
+i.fa-google{color: #03B0D2}
+i.fa-cog{color: #EDCB4F; font-size:20px}
+i.fa-sign-out{color: #006A97; font-size:20px}
+
+.profiletable input, .profiletable textarea {width:100%; resize: none}

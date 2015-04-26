@@ -5,11 +5,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">SB Admin</a>
+    <a class="navbar-brand" href="index.html">Konnect City Admin</a>
 </div>
 <!-- Top Menu Items -->
 <ul class="nav navbar-right top-nav">
-    <li class="dropdown">
+    <?php /*<li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
         <ul class="dropdown-menu message-dropdown">
             <li class="message-preview">
@@ -62,6 +62,7 @@
             </li>
         </ul>
     </li>
+    
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
         <ul class="dropdown-menu alert-dropdown">
@@ -88,9 +89,11 @@
                 <a href="#">View All</a>
             </li>
         </ul>
-    </li>
+    </li> */?>
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user"></i> <?php echo $this->Session->read('Auth.User.full_name'); ?> <b class="caret"></b>
+        </a>
         <ul class="dropdown-menu">
             <li>
                 <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -113,11 +116,12 @@
         </ul>
     </li>
 </ul>
-<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li class="active">
-            <a href="index.html"><i class="fa fa-fw fa-user"></i> Users</a>
+            <?php echo $this->Html->link('<i class="fa fa-fw fa-users"></i> Users',
+                    array('controller' => 'users', 'action' => 'commander_index'), array('escape' => FALSE));?>
         </li>
     </ul>
 </div>

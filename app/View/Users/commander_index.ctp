@@ -1,6 +1,7 @@
-<?php echo $this->Html->script(array('custom/users'), array('inline' => FALSE)) ?>
+<?php echo $this->Html->script(array('custom/controllers', 'custom/users'), array('inline' => FALSE)) ?>
 
-<div class="row">
+<div class="row" ng-controller="commander_users">
+    Full Name: {{firstName + " " + lastName}}
     <div class="col-lg-12">
         <div class="row">
             <h2 class="col-lg-6"><?php echo $page_title; ?></h2>

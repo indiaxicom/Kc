@@ -27,7 +27,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         <?php
         echo $this->Html->meta('icon');
         echo $this->Html->css(array('bootstrap.min', 'sb-admin', 'font-awesome/css/font-awesome.min'));
-        echo $this->Html->script(array('jquery', 'jquery-ui.min', 'bootstrap.min'));
+        echo $this->Html->script(array('jquery', 'jquery-ui.min', 'bootstrap.min', 'angular.min'));
 
         echo $this->fetch('meta');
         echo $this->fetch('css');
@@ -35,7 +35,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         ?>
         <script> var SITE_URL = "<?php echo $this->Html->url('/') ?>"</script>
     </head>
-    <body>
+    <body ng-app="konnectCity">
         <div id="wrapper">
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <?php if ($this->Session->read('Auth.User.type') && $this->Session->read('Auth.User.type') == USER_ADMIN) : ?>

@@ -12,7 +12,7 @@ module.exports.getAll = function(req, res) {
 };
 
 module.exports.getUser = function(req, res) {
-    User.findOne({'_id': req.params.user_id}, function(err, users){
+    User.findOne ({'_id': req.params.user_id}, function(err, users){
         if (err) {
             res.send(err);
         }
@@ -30,6 +30,7 @@ module.exports.save = function(req, res) {
     });
 };
 module.exports.update = function(req, res) {
+
     User.update({'_id': req.params.user_id}, req.body, function(err, users) {
         if (err)
         {

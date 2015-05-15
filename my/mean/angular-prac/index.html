@@ -1,0 +1,12 @@
+<html ng-app="myApp">
+    <head>
+        <title>My Angular App!</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+        <script src="controllers.js"></script>
+    </head>
+    <body ng-controller="DoubleController">
+        <button ng-click="btnDouble(10)">10</button>
+        <input ng-init="num='0'" type="text" ng-model="num">
+        {{ double(num) }} {{numi}}
+    </body>
+</html>

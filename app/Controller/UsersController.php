@@ -65,10 +65,12 @@ class UsersController extends AppController {
 
     public function register($step = 0)
     {
+        $user_details = $this->User->findById($this->Auth->user('id'));
+
         switch($step)
         {
             case 1 :
-                $this->_register_step_1();
+                $this->_register_step_1($user_details);
                 break;
             case 2 :
                 $this->_register_step_2();
@@ -100,7 +102,6 @@ class UsersController extends AppController {
                     else
                     {
                         $this->Session->setFlash(__('Unable to save details'));
-                        pr($this->User->validationErrors);
                     }
                 }                
         }
@@ -110,8 +111,21 @@ class UsersController extends AppController {
      * Created By - Sumit Kohli
      * Description - User Registration Step 1
      */
-    public function _register_step_1()
+    public function _register_step_1($user_details = array())
     {
+        if ($this->request->is(array('post', 'put'))) {
+            $this->request->data['User']['id'] = $this->Auth->user('id');
+
+            if (!empty($user_details['UserDetail']['id'])) {
+                $this->request->data['UserDetail']['id'] = $user_details['UserDetail']['id'];
+            }
+            $this->User->saveAssociated($this->request->data);
+            return $this->redirect(array('action' => 'register' , '2'));
+        }
+        
+        $this->request->data = $user_details;
+        $countries = $this->get_countries();
+        $this->set(compact('countries'));
         $this->render('_register_step_1');
     }
     

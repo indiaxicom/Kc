@@ -23,6 +23,14 @@ class User extends AppModel {
     public $virtualFields = array(
         'full_name' => 'CONCAT(User.first_name, " ", User.last_name)'
     );
+    
+    public $hasOne = array(
+        'UserDetail' => array(
+            'className' => 'UserDetail',
+            'foreignKey' => 'user_id',
+            'dependent' => TRUE
+        )
+    );
 
     public function beforeSave($options = array()) {
 

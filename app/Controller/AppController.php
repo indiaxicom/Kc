@@ -35,6 +35,7 @@ class AppController extends Controller {
     public $components = array(
         'Session',
         'Util',
+        'RequestHandler',
         'Auth' => array(
             'authorize' => 'Controller',
             'loginRedirect' => array(
@@ -81,5 +82,19 @@ class AppController extends Controller {
         $str = preg_replace( "/\s+/", "-", $str);
         $str = strtolower($str);
         return $str;
+    }
+    
+    /*
+     * Description - Get all countries
+     * Author - Sumit Kohli
+     */
+    public function get_countries()
+    {
+        $this->loadModel('Country');
+        $countries = $this->Country->find('list', array('fields' => array('iso_code', 'name'), 'order' => 'name'));
+
+        $this->set('countries', $countries);
+        $this->set('_serialize', array('countries'));
+        return $countries;
     }
 }

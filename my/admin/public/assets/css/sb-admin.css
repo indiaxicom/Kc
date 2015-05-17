@@ -26,6 +26,11 @@ body {
     padding: 0;
     background-color: #fff;
 }
+#login-page-wrapper {
+    width: 80%;
+    padding: 10px 0;
+    background-color: #fff;
+}
 
 .huge {
     font-size: 50px;

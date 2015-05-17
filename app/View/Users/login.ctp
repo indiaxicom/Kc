@@ -1,4 +1,4 @@
-<?php echo $this->Html->script('custom/users') ?>
+<?php echo $this->Html->script(array('jquery.validate.min', 'custom/users'), array('inline' => FALSE)) ?>
 <?php echo $this->Form->create('User', array('url' => array('action' => 'login'))); ?>
     <div>
         <div class="homemidfl">Connecting Cities<br>With People</div> 

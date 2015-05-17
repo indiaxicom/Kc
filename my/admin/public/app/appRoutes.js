@@ -15,6 +15,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             .when('/users/edit/:user_id', {
                 templateUrl: 'views/users/admin_add.html',
                 controller: 'UserEditController'
+            })
+            .when('/signup', {
+                templateUrl: 'views/users/admin_signup.html',
+                controller: 'UserSignUpController'
             });
             $locationProvider.html5Mode(true);
     }]);
